@@ -1,0 +1,89 @@
+----- IN BANK TRANSACTIONS --
+do a highlight just like in BnB's new software..
+because it does not display the caption like "Bank A/C" "Affected A/C"
+while entering..
+also, while editing, there is a great confusion, if the user gives
+a wrong a/c and loops again..
+
+
+NOW GOING ON - URGENTLY
+ Making PURCHASE really Online (in the case of Accounts)
+
+TO DO URGENTLY THEN -
+ Make SALES also really online.
+
+VERY URGENT:
+ Make some controlling mechanisms for editing A/C op. bal and master op.stock
+
+===========================================================
+
+1. Service Engineer's Report
+ 
+1. Public Account       -- done
+2. List A/C Balance of GROUP A/C showing wrong balance (double the amount)
+   -- GOING ON
+3. Daily Sheet - Service Report verify and copy it to DAY_SMM.PRG also.
+4. Add provision for EDITING the accounts of a group a/c (without
+   having the need to pass an entry for that)
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+2. Period wise A/C Balances.  -- done
+4. Ledger - ENTER - going to daybook (not to Sales/Purchase) -- done
+5. Service Call entry - not coming in Daily Sheet. -- done
+6. Education Collection Report - Student Head not found.
+
+7. Ledger - WMS - Bank Ledger - Balance Wrong. (Op.bal-Debit coming as Credit)
+    -- done
+
+1. Account Closure - Add Protection to SERVICE also. -- done
+
+5. Sales Details - SALE_DET.TXT output function :-
+      When there is only one transaction and there is a discount,
+      the discount is not shown. -- done
+
+6. Sales Details - Spares & System (SUP and NORMAL) output :-
+      The discount is not shown at all. -- done
+
+
+URGENT
+-----
+
+5. TAKE BACKUPS!
+-------------------------------------------------------------------------
+
+
+1. Check whether REMARKS can be changed after closure.
+    -- Father told no need. Look at ACCOUNTS.PRG for a detailed remark
+**DONE**
+
+2. Include DBT,FPT files during BACKUP
+**DONE**
+3. Create Restore BACKUP for EasyAccounts
+**DONE**
+
+4. Create Multiple BACKUP and RESTORE (for different companies)
+   for EDU
+
+7. Backup Restore - DELETE ALL .CDX FILES IN THE RESTORED DIRECTORY
+   or Else, unpredicted results in DBF may occur!!!!
+**DONE**
+
+8. Daybook MULTIPLE ADD feature (remove simple entry. give the DBLENTRY
+   method).
+   Also Include  EDIT, DELETE facilities for it.
+
+9. Daybook data storage method - Assign VOUCHER numbers, not IDs
+   ==> every record should not have independant IDs, but should possess
+       voucher number (in the field ID) which is common to all records
+       in that voucher.
+
+10. Backup Restore - copy the SYSTEM_ records too to the C:SYSTEM.EA as it
+    is required by the program for checking multiple access. (If those records
+    are not present, it wont be possible to ReIndex data)
+**DONE**
+
+11. Batch Cost - Coming that of S/Return price.
+12. Public Account - Digits (Tot.Debit & Credit)
+13. Public Account - Show company details
+14. 
+=========================================================================

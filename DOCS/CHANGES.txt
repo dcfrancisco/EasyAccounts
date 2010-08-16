@@ -1,0 +1,73 @@
+Changes to Database Structures
+------------------------------
+Added BATCHES.DBF
+
+ACBALS.DBF - Add Field [Type C 20]
+
+MASTER.DBF - Remove SRETURN,PRETURN,DAMAGE,TRANSFER,G_STOCK
+             Add    [OpCost N 10,2]
+
+SYSTEM.INT - Add [FEEDBACK C 6]
+
+SYSTEM.EA  - Major Revisions. Append old info. to the Revised Structure.
+
+Added C:\EA\02\LINKS.DBF
+
+Added C:\EA\02\PREPORT.DBF
+
+Can Create C:\EA\CONFIG.DAT if needs a change from the default 02 directory.
+
+Auto Create FONT.EA if the font is changed.
+
+//=======================================
+A.D 20-10-2002 The 20th of great October, 2 years next the eventful millenium.
+
+** Things to Remember:
+Removed special privileges COMPANY.ADM and ONQ.CMP to allow closure of
+individual companies. Combined this right into ICLOSE.EA
+
+(If the COMPANY is Administration, then it will automatically close all
+ the companies. So that issue goes to rest. But still, it needs ICLOSE.EA
+ to activate the Closure.)
+
+Removed all the privileges of ONQ.CMP regarding one company system.
+From now on, EasyAccounts will always run on multiple company configuration.
+
+** Things to Note:
+Changed .NTX into .CDX (DBFNTX to not DBFCDX, but Comix!)
+Therefore we have faster queries, filters and indexing and a more
+powerful and flexible recordlist capability (ClipMore!)
+
+Therefore, (**IMPORTANT**) the starting byte of BOOKSTAT.DBF is not either
+chr(03) (which is to be used for normal databases) or chr(131)(memo database)
+but chr(245) (õ) for the memo database BOOKSTAT. (For normal dbfs, the old
+chr(03) still prevails.) And not BOOKSTAT.DBT but BOOKSTAT.FPT
+                         (ie,take foxpro.exe with the EA disk)
+
+For the above, I have rewritten the PROT.EXE to check for .FPT or BOOKSTAT.DBF
+and apply the Foxpro letter (õ) to it. For normal .DBTs, it would add the
+Clipper letter (ƒ). So no great need to worry about PROT. But one thing
+remains, take the SETBOOK.PRG with the EA Disk, which is necessery to convert
+Clipper DBF DBT to Foxpro FPT (ie, to create an FPT file for BOOKSTAT)
+
+*****Programming Related
+19-11-2002
+
+ALL PRGS Starting with CUSTOM_*.* will be custom made and applicable only to
+those modules written specifically for "WINTECH"
+***************
+
+*****Administration Related
+03-12-2002
+
+New PBREAK.EXE - to give the Answer Key for the registration code of EA.
+New PSET.EXE   - to create USERS.DBF with SUP password in the current
+                 HDD serial number so as to enable it to work in that machine.
+*******************
+
+//=========================================================================
+
+Add Field ENTRY in ledger Character 12
+
+---------
+Now on the way - fields YR_BEGIN and YR_END on company module

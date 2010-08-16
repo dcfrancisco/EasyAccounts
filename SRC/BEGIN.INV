@@ -1,0 +1,288 @@
+#include "box.ch"
+#include "inkey.ch"
+#include "setcurs.ch"
+
+function menu
+accview(.t.,.t.,.f.)
+cshentry()
+dbkentry()
+return nil
+
+function accview(lAddEdit,lOpen,lView)
+local oBrowse, oColumn, nKey
+local bBox
+local cOldScreen := savescreen()
+local lOrder
+setcolor(boxcolor())
+if ! lOpen
+   select accounts
+   lOrder := indexord()
+endif
+if lAddEdit = NIL
+   lAddEdit := .t.
+endif
+if lOpen = NIL
+   lOpen := .t.
+endif
+if lView = NIL
+   lView := .t.
+endif
+*dispscrn()
+if lView
+   bBox := makebox(3,41, 21, 78, boxcolor(),0)
+   setcolor(scrcolor())
+   if lAddEdit
+      @ 2,41 say padc('Select Accounts',78-40)
+      @22,41 say padc('þ ENTER - Select           þ S - Search',78-40)
+   else
+      @ 2,41 say padc('Select Account',38)
+      @22,41 say padc('þ ENTER - Select            þ S - Search',38)
+      sele ACCOUNTS
+      set order to 2
+   endif
+else
+   bBox := makebox(3, 1, 21, 78, boxcolor(),0)
+   setcolor(scrcolor())
+   if lAddEdit
+      @ 2,1 say padc('Add/Edit Accounts',78)
+      @22,1 say padc('þ A - Add Account   þ ENTER - Select   þ E - Edit',78)
+   else
+      @ 2,1 say padc('Select Account',78)
+      @22,1 say padc('þ ENTER - Select           þ S - Search',78)
+      sele ACCOUNTS
+      set order to 2
+   endif
+endif
+
+if lOpen
+   use ACCOUNTS new index ACC_1,ACC_2
+   set order to 2
+else
+   sele ACCOUNTS
+   set order to 2
+endif
+setcolor(boxcolor())
+if !lView
+   oBrowse := TBrowseDB(4, 2, 20, 77)
+else
+   oBrowse := TBrowseDB(4,42, 20, 77)
+endif
+oBrowse:headSep := 'ÍÑÍ'
+oBrowse:colSep := ' ³ '
+oBrowse:colorSpec := boxcolor()
+oColumn := TBColumnNew('       A/C Name', fieldblock('ACCOUNT'))
+oColumn:footing := ''
+oBrowse:AddColumn(oColumn)
+oColumn := TBColumnNew('      Details', {|| subs(details, 1, 30)} )
+oColumn:footing := ''
+oBrowse:AddColumn(oColumn)
+oBrowse:autoLite := .f.
+do while nKey <> iif(lView,K_ENTER,K_ESC)
+   dispbegin()
+   do while ! oBrowse:stabilize()
+   enddo
+   dispend()
+   if oBrowse:stable
+      if oBrowse:hitTop
+         tone(300, 2)
+      elseif oBrowse:hitBottom
+         tone(300, 2)
+      endif
+      //ÄÄÄÄ highlight current row
+      oBrowse:colorRect( {oBrowse:rowPos, oBrowse:leftVisible, oBrowse:rowPos, oBrowse:rightVisible}, { 2, 2 })
+      oBrowse:hilite()
+      nKey := inkey(0)
+      oBrowse:colorRect( {oBrowse:rowPos, oBrowse:leftVisible, oBrowse:rowPos, oBrowse:rightVisible}, { 1, 2 })
+   endif
+   do case
+      case nKey == K_UP
+           oBrowse:up()
+      case nKey == K_DOWN
+           oBrowse:down()
+      case nKey == K_LEFT
+           oBrowse:left()
+      case nKey == K_RIGHT
+           oBrowse:right()
+      case nKey == K_PGDN
+           oBrowse:pageDown()
+      case nKey == K_PGUP
+           oBrowse:pageUp()
+      case nKey == K_CTRL_PGDN
+           oBrowse:goBottom()
+      case nKey == K_CTRL_PGUP
+           oBrowse:goTop()
+      case nKey == K_HOME
+           oBrowse:home()
+      case nKey == K_END
+           oBrowse:end()
+      case nKey == K_CTRL_HOME
+           oBrowse:panHome()
+      case nKey == K_CTRL_END
+           oBrowse:panEnd()
+      case nKey == K_CTRL_LEFT
+           oBrowse:panLeft()
+      case nKey == K_CTRL_RIGHT
+           oBrowse:panRight()
+      case upper(chr(nKey)) ==  'A' .and. lAddEdit
+           addaccount()
+           oBrowse:refreshall()
+      case upper(chr(nKey)) ==  'E' .and. lAddEdit
+           editaccount()
+           *oBrowse:refreshcurrent()  // cant do that. change in index!
+           oBrowse:refreshall()
+   endcase
+enddo
+restscreen(0,0,24,79,cOldScreen)
+if lOpen
+   close all
+else
+   set order to (lOrder)
+endif
+return nil
+
+static function addaccount(cxType)
+local _xx := savescreen(0,0,24,79)
+local bBox
+local cACName := space(40)
+local cACDetails := space(40)
+local nOpBal := 0.00
+local cOpType := ' '
+local nChoice := 1
+local cACType
+local nId
+local aTypes := {'Assets - Current','Fixed Assets','Bank','Expense','Income','Tax Collected','Purchase','Sales','Sundry Creditor','Debtor','Capital'}
+if cxType != NIL
+   aTypes := cxType
+endif
+dispscrn()
+bBox := makebox(6,13,20,69,boxcolor())
+setcolor(scrcolor())
+@ 05,13 say padc('Add Account',57)
+setcolor(boxcolor())
+do while .t.
+   @ 07,14 say "A/C Name  : " get cACName pict '@!'
+   @ 09,14 say "Details   : " get cACDetails pict '@!'
+   @ 11,14 say "Op.Bal    : " get nOpBal pict '9999999.99'
+   @ 11,39 get cOpType valid upper(cOpType)='D' .or. upper(cOpType)='C' .or. cOpType=' '
+   @ 13,14 say 'A/C Type  : '
+   @ 19,24 say "<Save>"
+   @ 19,48 say "<Abort>"
+   read
+   if empty(cACName)
+      nChoice:=2
+      exit
+   endif
+   cOpType := upper(cOpType)
+   if cxType = NIL
+   setstatus('Add Account --> Select type of A/C')
+   @ 11,42 say chr(24)
+   @ 15,42 say chr(25)
+   @ 15,30 say 'Select -->'
+   @ 10,43,16,68 BOX B_DOUBLE_SINGLE
+   cACType := achoice(11,44,15,67,aTypes)
+   *@ 11,27 clear to 15,42
+   setstatus(',')
+   if cACType = 0
+      nChoice := 2
+      exit
+   else
+      cACType := aTypes[cACType]
+   endif
+   else
+   cACType := cxType
+   endif
+   @ 13, 27 say cACType
+   @ 19,24 prompt "<Save>"
+   @ 19,48 prompt "<Abort>"
+   menu to nChoice
+   exit
+enddo
+if nChoice = 1
+   set order to 1
+   go bott
+   nId := id+1
+   append blank
+   replace Id with nId
+   replace account with proper(cACName)
+   replace details with proper(cACDetails)
+   if cOpType='D'
+      replace opbal with nOpBal
+   else
+      replace opbal with nOpBal*-1
+   endif
+   replace type with cACType
+   set order to 2
+endif
+restscreen(0,0,24,79,_xx)
+return nil
+
+//-----------------------------------------------------
+
+static function editaccount(cxType)
+local _xx := savescreen(0,0,24,79)
+local bBox
+local cACName := account
+local cACDetails := details
+local nOpBal :=  abs(opbal)
+local cOpType := iif(opbal<0,'C','D')
+local nChoice := 1
+local nId
+local aTypes := {'Assets - Current','Fixed Assets','Bank','Expense','Income','Tax Collected','Purchase','Sales','Sundry Creditor','Debtor','Capital'}
+local cACType := ascan(aTypes,rtrim(ltrim(type)))
+dispscrn()
+bBox := makebox(4,13,18,69,boxcolor())
+setcolor(scrcolor())
+@ 03,13 say padc('Edit Account',57)
+setcolor(boxcolor())
+do while .t.
+   @ 05,14 say "A/C Name  : " get cACName pict '@!'
+   @ 07,14 say "Details   : " get cACDetails pict '@!'
+   @ 09,14 say "Op.Bal    : " get nOpBal pict '9999999.99'
+   @ 09,39 get cOpType valid upper(cOpType)='D' .or. upper(cOpType)='C' .or. cOpType=' '
+   @ 11,14 say 'A/C Type  : '
+   @ 17,24 say "<Save>"
+   @ 17,48 say "<Abort>"
+   read
+   cOpType := upper(cOpType)
+   if empty(cACName)
+      nChoice:=2
+      exit
+   endif
+   if cxType = NIL
+   @ 11,42 say chr(24)
+   @ 15,42 say chr(25)
+   setstatus('Edit Account --> Select type of A/C')
+   @ 13,30 say 'Select -->'
+   @ 10,43,16,68 BOX B_DOUBLE_SINGLE
+   cACType := achoice(11,44,15,67,aTypes,,,cACType)
+   *@ 11,27 clear to 15,42
+   if cACType = 0
+      nChoice := 2
+      exit
+   else
+      cACType := aTypes[cACType]
+   endif
+   setstatus(',')
+   else
+   cACType := cxType
+   endif
+   @ 11, 27 say cACType
+   @ 17,24 prompt "<Save>"
+   @ 17,48 prompt "<Abort>"
+   menu to nChoice
+   exit
+enddo
+if nChoice = 1
+   replace account with proper(cACName)
+   replace details with proper(cACDetails)
+   if cOpType='D'
+      replace opbal with nOpBal
+   else
+      replace opbal with nOpBal*-1
+   endif
+   replace type with cACType
+endif
+restscreen(0,0,24,79,_xx)
+return nil
+
+* eof: ACCOUNTS.PRG

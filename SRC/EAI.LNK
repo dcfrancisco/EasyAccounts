@@ -1,0 +1,60 @@
+#
+#     Link Script for EasyAccounts v1.5
+#     Developed and Tested by Jasim A B
+#     E-Mail  : jasimab@hotmail.com
+#     Website : jasim.iwarp.com
+#
+
+beginarea
+file install
+file menu
+file utils
+file errorsys
+file calc
+file getsys
+file security
+file COLORS
+endarea
+
+beginarea
+section file SALES
+section file PURCHASE
+section file MASTER
+section file U_REPPRG
+section file U_REPORT
+section file MAS_REP
+section file GROUPS
+section file CUSTOMER
+section file SALE_REP
+section file PRCH_REP
+endarea
+beginarea
+section file ACCOUNTS
+section file BANKBOOK
+section file EDU_1
+section file ACC_REP
+section file CASHBOOK
+section file DAYSHEET
+section file PROFITS
+section file LEDGER
+endarea
+beginarea
+section file UTIL_MAS
+section file DAY_SMM
+section file F_READ
+section file FIN_PRD
+section file FIN_POS
+endarea
+beginarea
+section file PHONE
+section file APPTS
+section file REFRS
+section file CALENDAR
+section file RPSYS
+section file COMPANY
+section file SBREP
+section file CUSTOM_1
+section file APICK
+endarea
+OUTPUT EA
+LIB SUPER,GHOST,GHOSTUSA,VS_905,GRUMP,NANFOR

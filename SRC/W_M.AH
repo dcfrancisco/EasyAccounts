@@ -1,0 +1,163 @@
+/*
+//
+//  File : W_M.AH
+//
+//  Description : Clipper 5.2 header file for windowing
+//  Author : Jasim A Basheer
+//  Last revision on : 02/09/2000 5:00pm
+//
+//                       Super Windowing Features!
+//                       --------------------------
+//   1) Ordinary SAYs and GETs are automatically aligned inside the window
+//   2) Perfect colour management
+//   3) No BRAIN INJURIES calculating window coordinates. Window can be
+//      automatically centralized by giving number of rows and columns!
+//   4) SAYs and GETs can be CENTRALIZED, BOTTOMized, TOPized and RIGHTized
+//      inside the window
+//   5) Boxing and Clearing right inside the window
+//   6) Flicker-free movement of windows. No additional programming!
+//   7) Above all - flexible, source included!
+//
+//  Programming Hazard : Size and memory requirements of the program will
+//                       boom up because every display statement contains
+//                       all the commands for aligning themselves in the
+//                       CENTER, BOTTTOM and RIGHT.
+//                       
+//                             THIS SHALL BE RESOLVED SOON
+//
+//
+//                                 DISCLAIMER
+//  This program is provided AS-IS.The author makes no warranties of any kind,
+//  whether oral or written, express or implied, including any warranty of
+//  merchantability, fitness for a particular purpose or non-infringment.
+//  
+// 
+*/ 
+
+
+#define ERROR 1
+#define EXCLAIM 2
+#define SUCCESS 3
+
+#command @ <row>, <col> GET <var>                                       ;
+                        [PICTURE <pic>]                                 ;
+                        [VALID <valid>]                                 ;
+                        [WHEN <when>]                                   ;
+                        [SEND <msg>]                                    ;
+                        [<center:CENTER>]                               ;
+                        [<right:RIGHT>]                                 ;
+                        [<bott:BOTTOM>]                                 ;
+     => SetPos(iif(!<.bott.>,wnd_row(<row>),wnd_bott(<row>)),iif(!<.center.>,iif(!<.right.>,wnd_col(<col>),wnd_right(<col>,<var>)),wnd_center(<col>,<var>)));
+       ; AAdd(                                                          ;
+           GetList,                                                     ;
+           _GET_( <var>, <"var">, <pic>, <{valid}>, <{when}> ):display();
+             )                                                          ;
+      [; ATail(GetList):<msg>]
+
+#command @ <row>, <col> SAY <xpr>                                       ;
+                        [PICTURE <pic>]                                 ;
+                        [COLOR <color>]                                 ;
+                        [<center:CENTER>]                               ;
+                        [<right:RIGHT>]                                 ;
+                        [<bott:BOTTOM>]                                 ;
+=> DevPos( iif(!<.bott.>,wnd_row(<row>),wnd_bott(<row>)),iif(!<.center.>,iif(!<.right.>,wnd_col(<col>),wnd_right(<col>,<xpr>)),wnd_center(<col>,<xpr>))) ;
+ ; DevOutPict( <xpr>, <pic> [, <color>] )
+
+
+#command @ <row>, <col> SAY <xpr>                                       ;
+                        [COLOR <color>]                                 ;
+                        [<center:CENTER>]                               ;
+                        [<right:RIGHT>]                                 ;
+                        [<bott:BOTTOM>]                                 ;
+=> DevPos(iif(!<.bott.>,wnd_row(<row>),wnd_bott(<row>)),iif(!<.center.>,iif(!<.right.>,wnd_col(<col>),wnd_right(<col>,<xpr>)),wnd_center(<col>,<xpr>))) ;
+ ; DevOut( <xpr> [, <color>] )
+
+#command @ <top>, <left>, <bottom>, <right> BOX <string>                ;
+                                            [COLOR <color>]             ;
+      => DispBox(                                                       ;
+                  wnd_row(<top>), wnd_col(<left>), wnd_row(<bottom>), wnd_right(<right>,""), <string>            ;
+                  [, <color> ]                                          ;
+                )
+
+
+#command @ <row>, <col> SAY <sayxpr>                                    ;
+                        [<sayClauses,...>]                              ;
+                        GET <var>                                       ;
+                        [<getClauses,...>]                              ;
+      => @ <row>, <col> SAY <sayxpr> [<sayClauses>]    ;
+       ; @ W_Row(), W_Col()+1 GET <var> [<getClauses>] 
+
+
+
+/***
+*   fancy GETs...
+*/
+
+// @..GET..RANGE (preprocessed to @..GET..VALID)
+
+#command @ <row>, <col> GET <var>                                       ;
+                        [<clauses,...>]                                 ;
+                        RANGE <lo>, <hi>                                ;
+                        [<moreClauses,...>]                             ;
+                                                                        ;
+      => @ <row>, <col> GET <var>                                       ;
+                        [<clauses>]                                     ;
+                        VALID {|_1| RangeCheck(_1,, <lo>, <hi>)}        ;
+                        [<moreClauses>]
+
+
+// @..GET COLOR
+
+#command @ <row>, <col> GET <var>                                       ;
+                        [<clauses,...>]                                 ;
+                        COLOR <color>                                   ;
+                        [<moreClauses,...>]                             ;
+                                                                        ;
+      => @ <row>, <col> GET <var>                                       ;
+                        [<clauses>]                                     ;
+                        SEND colorDisp(<color>)                         ;
+                        [<moreClauses>]
+
+
+
+
+
+#command @ <top>, <left> TO <bottom>, <right> [DOUBLE]                  ;
+                                              [COLOR <color>]           ;
+      => DispBox(                                                       ;
+                  wnd_row(<top>), wnd_col(<left>), wnd_row(<bottom>), wnd_right(<right>,""),2         ;
+                  [, <color> ]                                          ;
+                )
+
+
+#command @ <top>, <left> TO <bottom>, <right> [COLOR <color>]           ;
+                                                                        ;
+      => DispBox(                                                       ;
+                  wnd_row(<top>), wnd_col(<left>), wnd_row(<bottom>), wnd_right(<right>,""), 1                   ;
+                  [, <color> ]                                          ;
+                )
+
+#command @ <row>, <col> PROMPT <prompt> [MESSAGE <msg>]  [<center:CENTER>]  ;
+      => __AtPrompt( wnd_row(<row>), iif(!<.center.>,wnd_col(<col>),wnd_center(<col>,<prompt>)),<prompt> , <msg>)
+
+#command CLS                                                            ;
+      => Scroll(wnd_row(0),wnd_col(0),wnd_bott(),wnd_right())             ;
+       ; SetPos(wnd_row(0),wnd_col(0))
+
+#command CLEAR SCREEN                                                   ;
+      => CLS
+
+#command @ <row>, <col>                                                 ;
+   => Scroll( wnd_row(<row>), wnd_col(<col>), wnd_row(<row>), wnd_right() );
+    ; SetPos( wnd_row(<row>), wnd_col(<col>) )
+
+#command @ <top>, <left> CLEAR                                          ;
+      => Scroll( wnd_row(<top>), wnd_col(<left>), wnd_bott(), wnd_right() ) ;
+       ; SetPos( wnd_row(<top>), wnd_col(<left>) )
+
+#command @ <top>, <left> CLEAR TO <bottom>, <right>                     ;
+      => Scroll( wnd_row(<top>), wnd_col(<left>), wnd_row(<bottom>), wnd_col(<right>) ) ;
+       ; SetPos( wnd_row(<top>), wnd_col(<left>) )
+
+
+

@@ -1,0 +1,300 @@
+                           ÛÛ Welcome to EasyAccounts! ÛÛ
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Thank you for downloading the entire bundle of EasyAccounts. This contains a
+setup module, executable version of the software, required databases and to
+top everything, has the entire source code and some sparse documentation too.
+
+Thanks.
+
+JASIM A BASHEER
+jasim.ab@gmail.com
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Please read through to see the development cycle of EA.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ş EasyAccounts v2.5 PRO by Jasim A Basheer ³ Revised Edition of EA v2.1 ş
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+History: (19-Mar-2004)
+
+  This project started as a fancy to me, just to move away from the
+  mundane programming practices I was following (when I was 13).
+
+  Till then, I've been using the core of my father's application
+  and just tweaked them to fit the requirements of my newer clients.
+  That code was a mess of public and private variables, was very
+  much unstructured and was very very difficult to maintain.
+
+  So, when the work of A.M Hospital came up, I decided not to use any
+  of the existing application frameworks and built one from scratch.
+  And that work can be said to be my first real work, the one I developed
+  ALL by myself. But this work too had the lingering of the old projects,
+  not in the code, but in the database structure, certain programming
+  and user interface logics etc. Only the code was entirely new. My
+  vision of a user interface and the menu and even most of the screen
+  colors were the same as that of my existing projects.
+
+  It was then I felt a little adventerous and started to think seriously
+  about the disadvantages of the existing database structures. By then,
+  I was exposed to many good accounting packages and had grasped the
+  code-less accounting paradigm and also many intutive user interface
+  methods. A white status bar on the top and bottom of the screen was
+  something which I craved for. I developed a liking to keep a constant
+  U.I and screen appearance feel in all parts of the program. But since
+  all my existing projects (even including A.M), was not based on any
+  such organisation, I made that historical (for me..) decision that
+  I wanted something better. And I went for it.
+
+  And EasyAccounts was born. To be exact, the very preliminary modules
+  (the Item Master and Accounts master) where somewhat ready on 30th
+  August 2001 (30-08-2001). The first running version of the
+  software (ver 1.0) was ready on 9th September 2001 (09-09-2001).
+  (look at d:\jasim\clworks\ea_revs\old\rev2)
+
+  September 2001 had me in the 9th standard at Sree Buddha, and the
+  work has now carried the software to its 4.1 PRO version which now
+  (as on the date of this writing - 19th Mar 2004) finds me waiting
+  for the next 2 exams of the Plus One course.
+
+  Please see the sparsely documented evolution cycle of EasyAccounts
+  spanning about 3 years..
+
+
+What's New?
+  Lots! Listed below 20 major revisions in EasyAccounts
+  making it much much better, easier and friendlier!
+
+------------------------------------------------------------------------
+  i)  User Interface - Now the Index Files and most reports includes
+      progress bars for better user feedback.
+
+ ii)  Better Software Security - EasyAccounts has been armed with
+      award winning security system. The chances of its piration
+      has been made almost nil!
+
+iii)  Screen Management - EasyAccounts is now supplied with 66
+      EGA/VGA fonts enabling the user to adjust the screen
+      according to his/her whims and fancies! (Shortcut key F6)
+
+ iv)  Colour Management - An Additional Colour (Yellow) has been
+      included in the VGA colour redefinition (RGB) panel
+      for better colour adjustment.
+
+  v)  Seperate Dr. Cr. Column has been added in the daily sheet removing
+      the daybook entries from the SALES/PURCHASE heading making an
+      easier view possible.
+
+ vi)  Trial Balance - A very easily comprehendable Trial Balance has been
+      added to the existing accounting system seamlessly integrating the
+      debit and credit tally criteria into the Income/Expense based data
+      entry system.
+
+vii)  Change in Menu Appearances - The appearance of the menu has been
+      slightly modified by introducing seperation lines in between menus
+      of different types.
+
+viii) Company Management - The EA user has been awarded more power and
+      flexibility with the introduction of the ability to create
+      unlimited number of companies with customizations.
+
+ ix)  Safer and Better Backup - The Backup module now saves additional
+      company and directory information to make data recovery more
+      safe and sound in the case of an emergency.
+
+  x)  Telephone Directory - An Alphabetically grouped telephone directory
+      (printable) has been added. Searching and printing telephone numbers
+      is now faster and easier.
+
+ xi)  Perfected Dues Report - The bugs in dues report has been removed
+      and is now accurate.
+
+xii)  Protected Mode - Now EasyAccounts works in Protected Mode (Extended)
+      which enables it to break the 16 MB EMS and 640k conventional memory
+      barriers.
+
+xiii) Compressed and Encrypted - The EasyAccounts executable is compressed
+      and encrypted with a powerful tool which makes it more compact and
+      hacker resistant!
+
+xiv)  More Portable - The SET CLIPPER environment variable is now burned
+      into the EasyAccounts executable so that it can be easily ported
+      without much fuss.
+
+ xv)  F4 DOS Prompt - Now you can access DOS prompt from anywhere in the
+      program so as to edit and copy reports etc. (Key F4)
+
+xvi)  Faster Indexing - Indexing of databases (Reindex Files) is now better
+      optimized yielding a faster operation. 
+
+xvii) Batch System - An almost transparent batch processing now takes place
+      to provide with accurate inventory information and control.
+             - New hotkey F11 to know the batch info. of the selected item
+               from anywhere in the program. ( An item should be active )
+             - Completely automated batch processing. When a new batch is
+               added, it is informed to the user during Purchase.
+               No batch selection is to be made by the user during Sales as
+               EasyAccounts automatically selects one or more appropriate
+               Batches.
+
+Related Changes ==> i) Now COST of items cannot be changed unless a purchase
+                       is made.
+                   ii) The COST field in the 'Add Item' or 'Edit Item',
+                       invoked from the 'Add/Edit Master Items' browse window,
+                       has been changed into 'Op.Cost' which is actually the
+                       cost of the Op.Stock.
+                  iii) The Cost Report now gives the actual Cost of each batch
+                       and therefore a correct estimation of Total Cost can be
+                       made.
+                   iv) The Item Report now contains a new Sub Title named
+                       'Batch Details' which lists each Batch and its
+                       corresponding balance stock.
+                    v) To prevent overcrowding of unused Batches, a garbage
+                       collection facility has been added to 'Reindex Files'
+                       which on operation, clears off the unused Batches.
+       [IMPORTANT] vi) Now a Purchase which was already made cannot be
+                       deleted if the stock has already been sold. Clearly,
+                       there SHOULD be enough balance stock available to
+                       delete a purchase and thus prevent Negative Balance.
+
+xviii) In sales, the entry of Negative Stock has been disabled. From now on, 
+       the cursor will not move if there is no balance stock. It just displays
+       a message and will go back to the 'Add Item' prompt.
+
+  xix) Multiple Company Catalog Capability - Now other than using all companies
+       from a single EasyAccounts window, you can create multiple company
+       groups in which the 'Select Company' dialog would be different for
+       different PATHs (Shortcuts) from which EA is called. You can have
+       a set of WSS companies in one window and set of ESTIMATE companies
+       in another window (window means Shortcut in the Windows Desktop)
+
+   xx) Last but not the Least! - Public Account facility. Now, you can group
+       accounts from 'different' companies together and get 'Great' reports.
+       For example, if you want to know all the Bank Transactions ever made
+       in a single company catalog, then what you have to do is get the
+       Public Accounts menu, call each and every company, add its bank a/cs
+       to the same public account and then call its Ledger. Once created and
+       linked, the A/Cs remain so unless did otherwise. So whenever you want
+       to get a Detailed/Summary, by Date/Account, with Daily Balance/without
+       it or whatever maybe, you can simply get it with a few strokes.
+-----------------------------------------------------------------------------
+Great, is'nt it? Now you have a much improved EasyAccounts before you. It has
+been made twice efficient and productive. Taking into consideration the great
+efforts put forward for acheiving this breakthrough, an advancement in the
+version of EasyAccounts has been made.
+
+EasyAccounts v2.1 PRO has been revised to EasyAccounts v2.5 PRO. Hope you
+benefit greatly from this brand new, breakthrough software.
+
+Wishing you many many Easy Accounting days ahead,
+The EA Developers.
+
+
+=====================================================================
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ş EasyAccounts v3.0 PRO by Jasim A Basheer ³ Revised Edition of EA v2.5 ş
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+WhatsNew as On 20th Oct. 2002
+
+ i) Changed the conventional .NTX to .CDX and .DBT to .FPT for better
+    locking and network accessibility and faster indexing. (By using
+    Comix library available from LoadStone Consortium)
+
+ ii) Made use of ClipMore! (available from the vendors of Comix) to
+     decrease the delay in Filtering.
+
+iii) Ledger Report made more faster by restructuring the report logic.
+
+ iv) A new feature 'View Cashbook' added. This is to avoid the time delay
+     for generating the Cashbook ledger each time we want to check an entry.
+     The View Cashbook is featured with Go Date, Fast Search and Filter.
+   
+  v) Introduction of Pull down  - The age old popup menu is gone! Now you
+     can easily move from one menu to another with extreme dexterity with
+     the new and enhanced Pull Down menu system.
+ 
+ vi) User Creation facility for the administrator - Now creating a new user
+     is not a cumbersome task! The administrator can create as many as users
+     he/she likes with the F10 key.
+
+=====================================================================
+WhatsNew as On 28th Oct. 2002
+
+  i) You can convert any TBrowse instance into an HTML file by just
+     pressing ALT-R during the browse occasion!
+
+=====================================================================
+WhatsNew as On 9th Nov. 2002
+
+  i) Introduced better BACKUP with quick-format, better directory
+     structure and included SYSTEM.EA in the backup for total
+     crash recovery.
+
+ ii) Accounts Pulldown menu reorganized making it more of utility, ease of
+     use and compact.
+
+iii) New Remarks List - prints all the remarks for a given date period.
+
+=====================================================================
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ş EasyAccounts v3.0 PRO by Jasim A Basheer ³ Revised Edition of EA v2.5 ş
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+WhatsNew as On 20th Jan. 2003
+
+  i) DirectGo Reports full fledged - There is now a top-to-bottom drill
+     down facility in almost all the reports. From the List A/C Balances,
+     press the enter key and the ledger for the highlighted party comes up.
+     From the ledger again, press enter to get the details of that particular
+     entry - be it Cashbook, Bankbook, Daybook or Sales & Purchase!
+
+ ii) Organized SETUP and INSTALL (Company creation) for better performance.
+     Now, BOOKSTAT.DBF is not packed up with the installation file (INSTALL.DAT)
+     It is DBCREATEd everytime INSTALL creates a new company. ('Cauz, I dont
+     want to link COMIX with SETUP due to which it can't create the
+     .FPT BOOKSTAT files which is used by EA. If it isnt .FPT structure,
+     then COMIX pops out a corruption detected error.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ş EasyAccounts v4.0 PRO by Jasim A Basheer ³ Revised Edition of EA v3.0 ş
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+The year 2003 has been quite eventful, except in the case of the
+development cycle of EasyAccounts. Being engaged in many other activities,
+(especially my Std.X CBSE board exam), I fear EasyAccounts had to be moved
+to the backyard of my active occupations.
+
+But January 2004 has seen me profusely working at EA and have proved very
+benefecial to the entire package.
+
+So, here is the:
+==-------------------------==
+WhatsNew as On 23rd Jan. 2004
+==-------------------------==
+
+  i) Integrated Service Call Register and corresponding Accounts modules
+     making EasyAccounts the perfect all-in-one software for the
+     Computer Sales & Service industry.
+
+ ii) Account Grouping with reports based on Entire Groups or Sub-Groups.
+     A Great addition to the host of useful features of EasyAccounts.
+
+iii) A Drill-down Balance Sheet incorporated to EA, making it a really easy
+     but world-class accounting solution.
+
+ iv) Accounting Reports (including Balance Sheet, Trial Balance and List A/C
+     balances) re-coded for allowing period-wise reports
+     (from the starting of the financial year till the selected date).
+
+  v) EA Network Support enhanced to allow Server-Client security interaction.
+     The Server needs to be registered for the clients (which also have to
+     be registered) to interact with it and successfully run on a network
+     environment.
+
+
+
+
+    
+     

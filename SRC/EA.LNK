@@ -1,0 +1,81 @@
+#
+#     Link Script for EasyAccounts v2.1 (PRO) Network Edition
+#       PROTECTED MODE (extended)
+#     Developed and Tested by Jasim A B
+#     E-Mail  : jasimab@hotmail.com
+#     Website : jasim.iwarp.com
+#
+
+STACK 7168
+
+BLINKER INCREMENTAL OFF
+
+BLINKER EXECUTABLE DUAL
+BLINKER EXECUTABLE CLIPPER //F:54;E:14000
+BLINKER EXECUTABLE NODELETE
+BLINKER EXECUTABLE COMPRESS 1
+
+file utils
+file pullmenu
+file security
+file MASTER
+file errorsys
+file calc
+file progbar
+file INSTALL
+file SALES
+file PURCHASE
+file MAS_REP
+file CUSTOMER
+file SALE_REP
+file PRCH_REP
+file ACCOUNTS
+file OLDDAY
+file BANKBOOK
+file CASHBOOK
+file EDU_1
+file ACC_REP
+file TRIALBAL
+file BSHEET
+file DAYSHEET
+file PROFITS
+file LEDGER
+file UTIL_MAS
+file DAY_SMM
+file F_READ
+file FIN_PRD
+file PHONE
+file APPTS
+file REFRS
+file CALENDAR
+file RPSYS
+file SBREP
+file APICK
+file BUNGMENU
+#
+# file SHUFL
+# Disabled due to annoying appearnce during very short intervals
+#
+# Activate later with full fledged timer settings.
+#
+file LINKS
+file USERS
+file BGEVENTS
+file rddsys
+file TB2HTML
+file COMPANY
+file DIRECTGO
+file CUSTOM_1
+file SERVICE
+file SERV_REP
+file FLOW
+
+file SUPPORT
+
+OUTPUT EA
+
+lib CM52,CMX52,BLXCLP52,CLIPPER,EXTEND,DBFNTX,TERMINAL,SUPER
+lib VS_905,GHOST,GHOSTUSA,GRUMP,NANFOR,SEG,AJFONT
+
+MAP S,A
+

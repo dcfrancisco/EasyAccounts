@@ -1,0 +1,92 @@
+#
+#     Link Script for EasyAccounts v2.1 (PRO) Network Edition
+#       Real Mode DEBUG VERSION
+#     Developed and Tested by Jasim A B
+#     E-Mail  : jasimab@hotmail.com
+#     Website : jasim.iwarp.com
+#
+
+STACK 7168
+
+BLINKER INCREMENTAL OFF
+
+BLINKER EXECUTABLE CLIPPER //F:54;E:14000
+BLINKER EXECUTABLE NODELETE
+BLINKER EXECUTABLE COMPRESS 1
+
+file utils
+file CLD.LIB
+file popmenu
+file pullmenu
+file security
+beginarea
+section file MASTER
+section file errorsys
+section file calc
+section file progbar
+section file GROUPS
+endarea
+beginarea
+section file INSTALL
+section file SALES
+section file PURCHASE
+section file MAS_REP
+section file CUSTOMER
+endarea
+beginarea
+section file SALE_REP
+section file PRCH_REP
+section file ACCOUNTS
+section file BANKBOOK
+endarea
+beginarea
+section file CASHBOOK
+section file EDU_1
+section file ACC_REP
+section file TRIALBAL
+section file BSHEET
+endarea
+beginarea
+section file DAYSHEET
+section file PROFITS
+section file LEDGER
+endarea
+beginarea
+section file UTIL_MAS
+section file DAY_SMM
+section file F_READ
+section file FIN_PRD
+section file FIN_POS
+endarea
+beginarea
+section file PHONE
+section file APPTS
+section file REFRS
+section file CALENDAR
+section file RPSYS
+section file SBREP
+endarea
+beginarea
+section file APICK
+section file BUNGMENU
+section file LINKS
+section file USERS
+section file CUSTOM_1
+endarea
+beginarea
+section file CM52
+section file rddsys
+section file COMPANY
+section file BGEVENTS
+section file SHUFL
+section file TB2HTML
+section file FLOW
+endarea
+
+OUTPUT EA
+
+lib CM52,CMX52,BLXCLP52,CLIPPER,EXTEND,DBFNTX,TERMINAL,SUPER
+lib VS_905,GHOST,GHOSTUSA,GRUMP,NANFOR,SEG,AJFONT
+
+MAP S,A
+
